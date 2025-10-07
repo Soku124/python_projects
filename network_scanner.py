@@ -4,18 +4,19 @@ import scapy.all as scapy
 
 def scan(ip):
     arp_request = scapy.ARP(pdst=ip)
-    # arp_request.show()
+    
     broadcast = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")
-    # broadcast.show()
+    
     arp_request_broadcast = broadcast/arp_request
-    # arp_request_broadcast.show()
-
-    # answered_list, unanswered_list = scapy.srp(arp_request_broadcast, timeout=1)
-    # print(answered_list.summary())
-    # print(unanswered_list.summary())
+    
 
     answered_list= scapy.srp(arp_request_broadcast, timeout=1)[0]
-    print(answered_list.summary())
+    # print(answered_list.summary())
+
+    for element in answered_list:
+        print(element[1].psrc)
+        print(element[1].hwsrc)
+        print("------------------------------------------\n")
 
 
 
