@@ -2,7 +2,7 @@
 
 import scapy.all as scapy
 
-arp_request = scapy.ARP(psdt="192.168.0.1/24")
+arp_request = scapy.ARP(pdst="192.168.0.1/24")
 
 ether_broadcart = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")
 
